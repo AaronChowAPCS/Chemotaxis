@@ -1,3 +1,10 @@
+//Aaron Chow
+//Block 3 CompSci
+//This is my Chemotaxis Program
+//aaronchowapcs.github.io/Chemotaxis/
+
+int spawnX;
+int spawnY;
 boolean eaten = false;
 boolean foodsies = true;
 Bacteria [] pest;
@@ -11,7 +18,7 @@ class Bacteria
  		{
  		myX = x;
  		myY = y; 
- 		pestColor = color(150,150,150);
+ 		pestColor = color(255,255,255);
 		}
  	void move()
  	{
@@ -66,16 +73,18 @@ void setup()
 {     
  	frameRate(15);
  	size(500,500);
- 	pest = new Bacteria[5];
+ 	pest = new Bacteria[8];
  	for(int index = 0; index < pest.length; index++)
  	{
- 		 pest[index] = new Bacteria(250,250);
+ 		spawnX = (int)(Math.random() * 500);
+ 		spawnY = (int)(Math.random() * 500);
+ 		pest[index] = new Bacteria(spawnX, spawnY);
  	}
  	yummy = new Food();
  }   
 void draw()   
 {   
-	background(255);
+	background(0);
 	for(int index = 0; index < pest.length; index++)
 	{
 		pest[index].move();
