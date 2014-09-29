@@ -13,41 +13,43 @@ class Bacteria
 {   
 	int myX;
 	int myY;
+	int sizeX;
 	int pestColor;
 	Bacteria(int x, int y)
  		{
  		myX = x;
  		myY = y; 
+ 		sizeX = 8;
  		pestColor = color(255,255,255);
 		}
  	void move()
  	{
- 		myX = myX + (int)(Math.random() * 8) - 4;
- 		myY = myY + (int)(Math.random() * 8) - 4;
+ 		myX = myX + (int)(Math.random() * 9) - 4;
+ 		myY = myY + (int)(Math.random() * 9) - 4;
  	}
  	void show()
  	{
  		noStroke();
  		fill(pestColor);
- 		ellipse(myX,myY,15,15);
+ 		ellipse(myX,myY,sizeX,sizeX);
  	}
  	void chase() //Causes the bacteria to hunt the food
  	{
  		if(yummy.foodX > myX)
  		{
- 			myX = myX + (int)(Math.random() * 8) - 2;
+ 			myX = myX + (int)(Math.random() * 9) - 2;
  			if(yummy.foodY > myY)
- 				myY = myY + (int)(Math.random() * 8) - 2;
+ 				myY = myY + (int)(Math.random() * 9) - 2;
  			else if(yummy.foodY < myY)
- 				myY = myY + (int)(Math.random() * 8) - 6;
+ 				myY = myY + (int)(Math.random() * 9) - 6;
  		}
  		else if(yummy.foodX < myX)
  		{
- 			myX = myX + (int)(Math.random() * 8) - 6;
+ 			myX = myX + (int)(Math.random() * 9) - 6;
  			if(yummy.foodY > myY)
- 				myY = myY + (int)(Math.random() * 8) - 2;
+ 				myY = myY + (int)(Math.random() * 9) - 2;
  			else if(yummy.foodY < myY)
- 				myY = myY + (int)(Math.random() * 8) - 6;
+ 				myY = myY + (int)(Math.random() * 9) - 6;
  		}
  	}
 } 
@@ -94,6 +96,7 @@ void draw()
  			eaten = true; //The bacteria has eaten the food
  		if(eaten == true)
  		{
+ 			pest[index].sizeX = pest[index].sizeX + 5;
  			pest[index].pestColor = yummy.foodColor; //The bacteria will become the same color as the food
  			mousePressed();
  			eaten = false;
